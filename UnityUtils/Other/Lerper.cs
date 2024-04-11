@@ -17,6 +17,11 @@ namespace UnityUtils.Other
             await To(value => setter(Vector3.Lerp(startValue, goal, value)), duration, cancellationToken);
         }
         
+        public static async Task To(float startValue, Action<float> setter, float goal, float duration, CancellationToken cancellationToken)
+        {
+            await To(value => setter(Mathf.Lerp(startValue, goal, value)), duration, cancellationToken);
+        }
+        
         public static async Task To(Action<float> setter, float duration, CancellationToken cancellationToken)
         {
             var startTime = Time.time;
