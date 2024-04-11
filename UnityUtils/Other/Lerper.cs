@@ -7,21 +7,24 @@ namespace UnityUtils.Other
 {
     public static class Lerper
     {
-        public static async Task To(Color startValue, Action<Color> setter, Color goal, float duration, CancellationToken cancellationToken)
+        public static async Task To(Color startValue, Color goal, float duration, Action<Color> setter,
+            CancellationToken cancellationToken)
         {
             await To(value => setter(Color.Lerp(startValue, goal, value)), duration, cancellationToken);
         }
-        
-        public static async Task To(Vector3 startValue, Action<Vector3> setter, Vector3 goal, float duration, CancellationToken cancellationToken)
+
+        public static async Task To(Vector3 startValue, Vector3 goal, float duration, Action<Vector3> setter,
+            CancellationToken cancellationToken)
         {
             await To(value => setter(Vector3.Lerp(startValue, goal, value)), duration, cancellationToken);
         }
-        
-        public static async Task To(float startValue, Action<float> setter, float goal, float duration, CancellationToken cancellationToken)
+
+        public static async Task To(float startValue, float goal, float duration, Action<float> setter,
+            CancellationToken cancellationToken)
         {
             await To(value => setter(Mathf.Lerp(startValue, goal, value)), duration, cancellationToken);
         }
-        
+
         public static async Task To(Action<float> setter, float duration, CancellationToken cancellationToken)
         {
             var startTime = Time.time;
